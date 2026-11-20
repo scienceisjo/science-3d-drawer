@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>과학 3D 자료 서랍</title>
+<meta name="description" content="다른 기관·선생님이 만든 웹 3D 과학 자료 링크 모음. 자료마다 저작권과 수업에서 쓰는 법을 적었습니다.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --bg:#ffffff; --ink:#1d2731; --sub:#55626e; --line:#dfe4e8; --soft:#f3f6f8;
+  --accent:#17607a; --accent-ink:#ffffff;
+  --k-edit:#1d7a46; --k-embed:#1f5fa8; --k-link:#a2461f; --k-check:#7a5a12;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 "Pretendard Variable",Pretendard,system-ui,-apple-system,"Segoe UI","Malgun Gothic",sans-serif;word-break:keep-all;overflow-wrap:anywhere}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #f2b705;outline-offset:2px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 16px}
+header{padding:40px 0 20px;border-bottom:1px solid var(--line)}
+h1{margin:0 0 8px;font-size:32px;line-height:1.3;font-weight:800;letter-spacing:-.01em}
+header p{margin:0;color:var(--sub);font-size:17px}
+header .meta{margin-top:10px;font-size:14px}
+h2{font-size:21px;margin:0 0 12px;font-weight:800}
+.copy-note{padding:24px 0;border-bottom:1px solid var(--line)}
+.copy-note ol{margin:0 0 16px;padding-left:22px}
+.copy-note li{margin:4px 0}
+.kinds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 24px;margin:0}
+.kinds div{border-left:4px solid var(--c);padding:2px 0 2px 12px}
+.kinds dt{font-weight:800;color:var(--c)}
+.kinds dd{margin:2px 0 0;color:var(--sub);font-size:15px}
+.ai-note{margin-top:16px;font-size:15px;color:var(--sub)}
+.ai-note code{background:var(--soft);padding:1px 6px;border-radius:4px;font-size:14px}
+.filters{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);padding:14px 0 12px;border-bottom:1px solid var(--line)}
+.row{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:8px}
+.row:last-child{margin-bottom:0}
+.row .lb{font-weight:700;font-size:14px;color:var(--sub);min-width:52px}
+.row button{font:inherit;font-size:15px;padding:6px 12px;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:6px;cursor:pointer}
+.row button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:700}
+.row input{flex:1 1 220px;font:inherit;font-size:15px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;min-width:0}
+.count{font-size:14px;color:var(--sub);margin-left:auto}
+main{padding-bottom:24px}
+.group h2{margin:28px 0 4px;padding-bottom:6px;border-bottom:2px solid var(--ink)}
+article{padding:18px 0;border-bottom:1px solid var(--line)}
+article h3{margin:0;font-size:20px;line-height:1.4}
+article h3 a{text-decoration:none}
+article h3 a:hover{text-decoration:underline}
+.maker{color:var(--sub);font-size:14px;margin:2px 0 6px}
+.desc{margin:0 0 10px}
+dl.facts{display:grid;grid-template-columns:96px 1fr;gap:4px 12px;margin:0;font-size:15px}
+dl.facts dt{color:var(--sub);font-weight:600}
+dl.facts dd{margin:0}
+.kind{font-weight:800}
+.kind.edit{color:var(--k-edit)} .kind.embed{color:var(--k-embed)} .kind.link{color:var(--k-link)} .kind.check{color:var(--k-check)}
+.credit{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+.credit q{quotes:none;background:var(--soft);padding:4px 8px;border-radius:4px;font-size:14px}
+.credit button{font:inherit;font-size:14px;padding:5px 10px;border:1px solid var(--line);background:#fff;border-radius:6px;cursor:pointer;color:var(--ink)}
+.credit button:hover{border-color:var(--accent)}
+.checked{font-size:13px;color:var(--sub);margin-top:6px}
+.empty{padding:32px 0;color:var(--sub)}
+#toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:8px 14px;border-radius:6px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .2s}
+#toast.on{opacity:1}
+@media (max-width:640px){
+  h1{font-size:26px}
+  .kinds{grid-template-columns:1fr}
+  dl.facts{grid-template-columns:78px 1fr}
+  .filters{position:static}
+  .count{margin-left:0;width:100%}
+}
+@media print{.filters,.credit button{display:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>과학 3D 자료 서랍</h1>
+    <p>다른 기관과 선생님들이 만든 웹 3D 과학 자료로 가는 링크를 모았습니다. 자료마다 저작권과 수업에서 쓰는 법을 적었습니다.</p>
+    <p class="meta">최종 확인 <span data-updated></span> · 자료 <span data-total></span>개</p>
+  </div>
+</header>
+
+<section class="copy-note" aria-labelledby="copy-h">
+  <div class="wrap">
+    <h2 id="copy-h">저작권 안내</h2>
+    <ol>
+      <li>이 사이트에는 <strong>링크만</strong> 있습니다. 다른 사이트의 화면·그림·3D 파일·코드를 복사해 두지 않았고, 미리보기 그림도 넣지 않았습니다.</li>
+      <li>각 자료의 저작권은 <strong>만든 기관·사람에게</strong> 있습니다. 자료 이름과 로고도 그분들 것입니다.</li>
+      <li>라이선스는 아래 「확인」 날짜에 원래 페이지에서 본 내용입니다. 바뀔 수 있으니 <strong>쓰기 전에 원래 페이지의 안내를 한 번 더</strong> 봐 주세요. 이 정리는 법률 자문이 아닙니다.</li>
+      <li>수업 자료에 넣을 때는 자료마다 적힌 <strong>출처 문구</strong>를 함께 적어 주세요(「출처 문구 복사」 단추).</li>
+      <li>이 사이트의 설명 글과 화면 짜임은 이 사이트를 만든 사람에게 저작권이 있습니다. 라이선스 정보가 틀렸으면 <a href="https://github.com/scienceisjo/science-3d-drawer/issues" target="_blank" rel="noopener">GitHub 이슈</a>로 알려 주세요. 고치거나 목록에서 빼겠습니다.</li>
+    </ol>
+    <dl class="kinds" data-kinds></dl>
+    <p class="ai-note">강의 화면을 AI로 만들 때는 목록 파일 주소 <code data-json-url>resources.json</code> 을 함께 주면, AI가 자료마다 쓰는 법을 읽고 그대로 따릅니다.</p>
+  </div>
+</section>
+
+<div class="filters">
+  <div class="wrap">
+    <div class="row" role="group" aria-label="과목"><span class="lb">과목</span><span data-f="subject"></span></div>
+    <div class="row" role="group" aria-label="쓰는 법"><span class="lb">쓰는 법</span><span data-f="kind"></span></div>
+    <div class="row"><span class="lb">찾기</span><input type="search" id="q" placeholder="자료 이름·단원·기술로 찾기 (예: 렌즈, 판 구조, three.js)" aria-label="자료 찾기"><span class="count" aria-live="polite" data-count></span></div>
+  </div>
+</div>
+
+<main class="wrap" id="list"></main>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<footer id="app-credit" style="width:100%;box-sizing:border-box;margin:2.5rem 0 0;padding:14px 12px;text-align:center;font-size:12.5px;line-height:1.6;color:#6b737c;font-family:system-ui,-apple-system,'Segoe UI','Malgun Gothic',sans-serif;border-top:1px solid rgba(128,128,128,.25);">제작 : 과학을 사랑하는 선생님 · 사이트 글·짜임 © 2026 · All rights reserved<br>링크한 자료의 저작권은 각 자료를 만든 곳에 있습니다.<br><span style="font-size:11px;opacity:.9;">최종 업데이트: <span data-updated></span></span></footer>
+
+<script id="data" type="application/json">/*DATA*/</script>
+<script>
+(function () {
+  'use strict';
+  var D = JSON.parse(document.getElementById('data').textContent);
+  var state = { subject: 'all', kind: 'all', q: '' };
+  var ORDER = ['physics', 'chemistry', 'biology', 'earth', 'multi', 'tool'];
+
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function $(s, r) { return (r || document).querySelector(s); }
+  function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+
+  $$('[data-updated]').forEach(function (el) { el.textContent = D.updated; });
+  $('[data-total]').textContent = D.items.length;
+  $('[data-json-url]').textContent = new URL('resources.json', location.href).href;
+
+  var colors = { edit: 'var(--k-edit)', embed: 'var(--k-embed)', link: 'var(--k-link)', check: 'var(--k-check)' };
+  $('[data-kinds]').innerHTML = Object.keys(D.kinds).map(function (k) {
+    return '<div style="--c:' + colors[k] + '"><dt>' + esc(D.kinds[k].label) + '</dt><dd>' + esc(D.kinds[k].text) + '</dd></div>';
+  }).join('');
+
+  function buttons(key, map) {
+    var html = '<button type="button" data-v="all" aria-pressed="true">전체</button>';
+    Object.keys(map).forEach(function (k) { html += '<button type="button" data-v="' + k + '" aria-pressed="false">' + esc(map[k].label || map[k]) + '</button>'; });
+    var box = $('[data-f="' + key + '"]');
+    box.innerHTML = html;
+    box.addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (!b) return;
+      state[key] = b.dataset.v;
+      $$('button', box).forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      render();
+    });
+  }
+  buttons('subject', D.subjects);
+  buttons('kind', D.kinds);
+  $('#q').addEventListener('input', function (e) { state.q = e.target.value.trim().toLowerCase(); render(); });
+
+  function iframeCode(it) {
+    return '<!-- ' + it.name + ': 보여 줄 화면을 연 뒤 그 주소로 src 를 바꿔 넣으세요 -->\n' +
+      '<iframe src="' + it.url + '" title="' + it.name.replace(/"/g, '') + '" width="100%" height="600" style="border:0" allow="fullscreen" loading="lazy"></iframe>\n' +
+      '<p>출처: ' + it.credit + '</p>';
+  }
+
+  function card(it) {
+    var k = D.kinds[it.kind];
+    return '<article id="' + esc(it.id) + '">' +
+      '<h3><a href="' + esc(it.url) + '" target="_blank" rel="noopener">' + esc(it.name) + '</a></h3>' +
+      '<p class="maker">' + esc(it.maker) + '</p>' +
+      '<p class="desc">' + esc(it.desc) + '</p>' +
+      '<dl class="facts">' +
+        '<dt>우리 단원</dt><dd>' + esc(it.units.join(' · ')) + '</dd>' +
+        '<dt>기술·언어</dt><dd>' + esc(it.tech) + ' · ' + esc(it.lang) + '</dd>' +
+        '<dt>라이선스</dt><dd>' + esc(it.license) + ' — <a href="' + esc(it.licenseUrl) + '" target="_blank" rel="noopener">근거 페이지</a></dd>' +
+        '<dt>쓰는 법</dt><dd><span class="kind ' + it.kind + '">' + esc(k.label) + '</span> · ' + esc(it.licenseNote) + ' ' + esc(it.howto) + '</dd>' +
+      '</dl>' +
+      '<div class="credit"><q>' + esc(it.credit) + '</q>' +
+        '<button type="button" data-copy="credit" data-id="' + esc(it.id) + '">출처 문구 복사</button>' +
+        (it.embeddable ? '<button type="button" data-copy="iframe" data-id="' + esc(it.id) + '">iframe 코드 복사</button>' : '') +
+      '</div>' +
+      '<p class="checked">확인 ' + esc(it.checked) + '</p>' +
+    '</article>';
+  }
+
+  function match(it) {
+    if (state.subject !== 'all' && it.subject !== state.subject) return false;
+    if (state.kind !== 'all' && it.kind !== state.kind) return false;
+    if (!state.q) return true;
+    var hay = [it.name, it.maker, it.desc, it.units.join(' '), it.tech, it.license].join(' ').toLowerCase();
+    return hay.indexOf(state.q) !== -1;
+  }
+
+  function render() {
+    var list = D.items.filter(match), html = '';
+    ORDER.forEach(function (s) {
+      var g = list.filter(function (it) { return it.subject === s; });
+      if (!g.length) return;
+      html += '<section class="group"><h2>' + esc(D.subjects[s]) + ' <small style="font-weight:500;color:var(--sub);font-size:15px">' + g.length + '개</small></h2>' + g.map(card).join('') + '</section>';
+    });
+    $('#list').innerHTML = html || '<p class="empty">조건에 맞는 자료가 없습니다. 과목·쓰는 법을 「전체」로 바꿔 보세요.</p>';
+    $('[data-count]').textContent = list.length + ' / ' + D.items.length + '개';
+  }
+
+  var toastT;
+  function toast(msg) { var t = $('#toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(function () { t.classList.remove('on'); }, 1600); }
+  function copyOld(text) {
+    return new Promise(function (ok, no) {
+      var ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed'; ta.style.top = '0'; ta.style.left = '0'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.focus(); ta.select();
+      try { document.execCommand('copy') ? ok() : no(); } catch (e) { no(e); }
+      document.body.removeChild(ta);
+    });
+  }
+  function copy(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text).catch(function () { return copyOld(text); });
+    }
+    return copyOld(text);
+  }
+  $('#list').addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-copy]'); if (!b) return;
+    var it = D.items.filter(function (x) { return x.id === b.dataset.id; })[0]; if (!it) return;
+    var text = b.dataset.copy === 'iframe' ? iframeCode(it) : it.credit;
+    copy(text).then(function () { toast(b.dataset.copy === 'iframe' ? 'iframe 코드를 복사했습니다' : '출처 문구를 복사했습니다'); },
+                    function () { toast('복사하지 못했습니다. 글자를 직접 골라 복사해 주세요'); });
+  });
+
+  render();
+  if (location.hash) { var el = document.getElementById(location.hash.slice(1)); if (el) el.scrollIntoView(); }
+})();
+</script>
+</body>
+</html>
